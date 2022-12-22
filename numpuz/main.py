@@ -2,8 +2,44 @@ import pygame
 from Board import Number
 
 def map_click(x, y):
-    pass
-    
+    if 272 <= x <= 336:
+        if 272 <= y <= 336:
+            return 1
+        elif 337 <= y <= 401:
+            return 5
+        elif 402 <= y <= 466:
+            return 9
+        elif 467 <= y <= 528:
+            return 13
+    elif 337 <= x <= 401:
+        if 272 <= y <= 336:
+            return 2
+        elif 337 <= y <= 401:
+            return 6
+        elif 402 <= y <= 466:
+            return 10
+        elif 467 <= y <= 528:
+            return 14
+    elif 402 <= x <= 466:
+        if 272 <= y <= 336:
+            return 3
+        elif 337 <= y <= 401:
+            return 7
+        elif 402 <= y <= 466:
+            return 11
+        elif 467 <= y <= 528:
+            return 15
+    elif 467 <= x <= 528:
+        if 272 <= y <= 336:
+            return 4
+        elif 337 <= y <= 401:
+            return 8
+        elif 402 <= y <= 466:
+            return 12
+        elif 467 <= y <= 528:
+            return 16
+
+
 
 
 
@@ -15,14 +51,14 @@ icon = pygame.image.load("img/fondo.png")
 
 pygame.display.set_icon(icon)
 running = True
-quadrant = {1: (272, 272), 2: (336,272), 3: (400, 272), 4: (464, 272), 
-            5: (272,336), 6: (336,336), 7: (400,336), 8: (464,336),
-            9: (272, 400), 10: (336, 400), 11: (400, 400), 12: (464, 400),
-            13: (272, 464), 14: (336, 464), 15: (400, 464), 16: (464, 464)}
+quadrant = {1: (272, 272), 2: (337,272), 3: (402, 272), 4: (467, 272),
+            5: (272,337), 6: (337,337), 7: (402,337), 8: (467,337),
+            9: (272, 402), 10: (337, 402), 11: (402, 402), 12: (467, 402),
+            13: (272, 467), 14: (337, 467), 15: (402, 467), 16: (467, 467)}
 numbers = [Number(pygame.image.load(f"img/number-{i}.png"), i) for i in range(1,17)]
 
 
-screen.fill((202,229,186))
+screen.fill((98, 114, 164))
 
 for number in numbers:
     screen.blit(number.value, quadrant[number.quadrant])
@@ -33,17 +69,6 @@ while running:
             running = False
         if event.type == pygame.MOUSEBUTTONDOWN:
             x, y = event.pos
-            if numbers[2].value.get_rect().collidepoint(x,y):
-                quadrant = 2
-                print(quadrant)
+            print(map_click(x,y))
            
-           
-    
     pygame.display.update()
-
-
-
-
-
-
-
