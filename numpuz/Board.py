@@ -29,5 +29,5 @@ class Board:
 
 class Number():
     def __init__(self, value, quadrant):
-        self.value = value
+        self.value= value
         self.quadrant = quadrant
